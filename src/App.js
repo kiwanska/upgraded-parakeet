@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-import './App.css';
+import Header from './elements/Header'
 
 class App extends Component {
+  state = {
+    favourites: [],
+    watchList: [],
+  }
+
   render() {
     return (
-      <div className="parakeet">
-        <header className="parakeet__header hero is-success">
-          <h1 className="parakeet__title">🥝 🐸 🌵</h1>
-        </header>
+      <div className='parakeet'>
+        <Header
+          favCount={this.state.favourites.length}
+          listCount={this.state.watchList.length}
+        />
       </div>
     );
   }
