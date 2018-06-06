@@ -1,16 +1,3 @@
-@import './styles/reset';
+@import './styles/settings/reset';
 
-.parakeet {
-  text-align: center;
-
-  &__header {
-    background-color: #eee;
-    color: #fff;
-    height: 100px;
-    padding: 20px;
-  }
-
-  &__title {
-    font-size: 1.5em;
-  }
-}
+@import './styles/elements/parakeet';
