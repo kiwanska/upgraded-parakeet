@@ -39,7 +39,7 @@ const Header = ({
                 className='button is-small is-success is-outlined'
                 onClick={() => setCurrentView(FAV_LIST)}
               >
-                FAVS&nbsp;({favCount})
+                FAVOURITES&nbsp;({favCount})
               </button>
             </p>
             <p className='control'>
@@ -47,7 +47,7 @@ const Header = ({
                 className='button is-small is-success is-outlined'
                 onClick={() => setCurrentView(WATCH_LIST)}
               >
-                MY LIST&nbsp;({listCount})
+                WATCH LIST&nbsp;({listCount})
               </button>
             </p>
           </div>

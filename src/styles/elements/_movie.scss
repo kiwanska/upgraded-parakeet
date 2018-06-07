@@ -1,6 +1,10 @@
 .movie {
   &__image-container {
-    width: 200px;
+    width: 100px;
+
+    @include tabletUp {
+      width: 200px;
+    }
 
     &--narrow {
       width: 80px;

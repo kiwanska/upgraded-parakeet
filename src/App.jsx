@@ -74,7 +74,7 @@ class App extends Component {
       case FAV_LIST:
         return (
           <SimpleMovieList
-            title='Movies you favourited'
+            title='Favourites'
             movies={favList}
             {...defaultProps}
           />
@@ -82,7 +82,7 @@ class App extends Component {
       case WATCH_LIST:
         return (
           <SimpleMovieList
-            title='Movies you saved'
+            title='Watch List'
             movies={watchList}
             {...defaultProps}
           />
