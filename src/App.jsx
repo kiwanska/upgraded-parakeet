@@ -7,8 +7,7 @@ import {
 } from './constants'
 import Header from './elements/Header'
 import MoviesList from './elements/MoviesList'
-import WatchList from './elements/WatchList'
-import FavList from './elements/FavList'
+import SimpleMovieList from './elements/SimpleMovieList'
 
 class App extends Component {
   state = {
@@ -61,14 +60,24 @@ class App extends Component {
     switch (currentView) {
       case FAV_LIST:
         return (
-          <FavList
+          <SimpleMovieList
+            title='Movies you favourited'
             movies={favList}
+            addToFavourites={this.addToFavourites}
+            addToWatchList={this.addToWatchList}
+            isOnFavList={this.isOnFavList}
+            isOnWatchList={this.isOnWatchList}
           />
         )
       case WATCH_LIST:
         return (
-          <WatchList
+          <SimpleMovieList
+            title='Movies you saved'
             movies={watchList}
+            addToFavourites={this.addToFavourites}
+            addToWatchList={this.addToWatchList}
+            isOnFavList={this.isOnFavList}
+            isOnWatchList={this.isOnWatchList}
           />
         )
       default:

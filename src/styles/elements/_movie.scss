@@ -1,5 +1,9 @@
 .movie {
   &__image-container {
     width: 200px;
+
+    &--narrow {
+      width: 80px;
+    }
   }
 }

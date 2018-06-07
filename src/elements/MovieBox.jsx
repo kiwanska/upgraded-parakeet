@@ -13,10 +13,17 @@ const MovieBox = ({
   addToWatchList,
   isOnFavList,
   isOnWatchList,
+  narrow,
 }) => (
   <div className='movie box'>
     <article className='media'>
-      <div className='media-left movie__image-container'>
+      <div
+        className={cx(
+          'media-left',
+          'movie__image-container',
+          { 'movie__image-container--narrow': narrow },
+        )}
+      >
         <figure className='image is-5by3'>
           <img
             src={`https://image.tmdb.org/t/p/w300${imageUrl}`}
@@ -26,13 +33,15 @@ const MovieBox = ({
       </div>
       <div className='media-content'>
         <div className='content'>
-          <div className='columns'>
-            <p className='column is-3'>
-              <strong className='title is-4'>{title}</strong><br/>
-              <small>{releaseDate}</small><br/>
+          <div className={cx('columns', { 'is-multiline': narrow })}>
+            <p className={cx('column', narrow ? 'is-12' : 'is-3')}>
+              <strong className='title is-4'>{title}</strong><br />
+              <small>{releaseDate}</small><br />
               <small>{voteAverage}</small>
             </p>
-            <p className='column content is-small'>{overview}</p>
+            {overview &&
+              <p className='column content is-small'>{overview}</p>
+            }
             <div className='column is-narrow'>
               <nav className='level is-mobile'>
                 <div className='level-right'>
@@ -74,17 +83,23 @@ const MovieBox = ({
   </div>
 )
 
+MovieBox.defaultProps = {
+  overview: '',
+  narrow: false,
+}
+
 MovieBox.propTypes = {
   id: PropTypes.number.isRequired,
   backdrop_path: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   release_date: PropTypes.string.isRequired,
   vote_average: PropTypes.number.isRequired,
-  overview: PropTypes.string.isRequired,
+  overview: PropTypes.string,
   addToFavourites: PropTypes.func.isRequired,
   addToWatchList: PropTypes.func.isRequired,
   isOnFavList: PropTypes.func.isRequired,
   isOnWatchList: PropTypes.func.isRequired,
+  narrow: PropTypes.bool,
 }
 
 export default MovieBox

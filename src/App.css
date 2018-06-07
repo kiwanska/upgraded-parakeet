@@ -14,3 +14,5 @@ body {
 
 .movie__image-container {
   width: 200px; }
+  .movie__image-container--narrow {
+    width: 80px; }
