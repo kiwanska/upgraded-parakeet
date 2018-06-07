@@ -29,6 +29,27 @@ class App extends Component {
     this.setState({ movies })
   }
 
+  isOnFavList = movieId => !!(this.state.favList.filter(movie => movie.id === movieId).length)
+
+  isOnWatchList = movieId => !!(this.state.watchList.filter(movie => movie.id === movieId).length)
+
+  addToFavourites = (movieId) => {
+    if (!this.isOnFavList(movieId)) {
+      this.setState(prevState => ({
+        favList: [...prevState.favList, ...prevState.movies.filter(movie => movie.id === movieId)],
+      }))
+    }
+  }
+
+  addToWatchList = (movieId) => {
+    if (!this.isOnWatchList(movieId)) {
+      this.setState(prevState => ({
+        watchList: [...prevState.watchList, ...prevState.movies.filter(movie => movie.id === movieId)],
+      }))
+    }
+  }
+
+
   renderCurrentView = () => {
     const {
       movies,
@@ -54,6 +75,10 @@ class App extends Component {
         return (
           <MoviesList
             movies={movies}
+            addToFavourites={this.addToFavourites}
+            addToWatchList={this.addToWatchList}
+            isOnFavList={this.isOnFavList}
+            isOnWatchList={this.isOnWatchList}
           />
         )
     }
@@ -64,6 +89,8 @@ class App extends Component {
       favList,
       watchList,
     } = this.state
+
+    console.log(favList)
 
     return (
       <div className='parakeet'>

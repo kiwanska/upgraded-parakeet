@@ -1,12 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 
 const MovieBox = ({
+  id,
   backdrop_path: imageUrl,
   title,
   release_date: releaseDate,
   vote_average: voteAverage,
   overview,
+  addToFavourites,
+  addToWatchList,
+  isOnFavList,
+  isOnWatchList,
 }) => (
   <div className='movie box'>
     <article className='media'>
@@ -30,12 +36,30 @@ const MovieBox = ({
             <div className='column is-2'>
               <nav className='level is-mobile'>
                 <div className='level-left'>
-                  <button className='button is-small is-success level-item'>
+                  <button
+                    className={cx(
+                      'button',
+                      'is-small',
+                      { 'is-success': isOnWatchList(id) },
+                      'level-item',
+                    )}
+                    aria-label='add to watch list'
+                    onClick={() => addToWatchList(id)}
+                  >
                     <span className='icon is-small'>
-                      <i className='fas fa-reply' aria-hidden='true' />
+                      <i className='fas fa-plus' aria-hidden='true' />
                     </span>
                   </button>
-                  <button className='button is-small is-success level-item' aria-label='like'>
+                  <button
+                    className={cx(
+                      'button',
+                      'is-small',
+                      { 'is-success': isOnFavList(id) },
+                      'level-item',
+                    )}
+                    aria-label='add to favourites'
+                    onClick={() => addToFavourites(id)}
+                  >
                     <span className='icon is-small'>
                       <i className='fas fa-heart' aria-hidden='true' />
                     </span>
@@ -51,11 +75,16 @@ const MovieBox = ({
 )
 
 MovieBox.propTypes = {
+  id: PropTypes.number.isRequired,
   backdrop_path: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   release_date: PropTypes.string.isRequired,
   vote_average: PropTypes.number.isRequired,
   overview: PropTypes.string.isRequired,
+  addToFavourites: PropTypes.func.isRequired,
+  addToWatchList: PropTypes.func.isRequired,
+  isOnFavList: PropTypes.func.isRequired,
+  isOnWatchList: PropTypes.func.isRequired,
 }
 
 export default MovieBox
