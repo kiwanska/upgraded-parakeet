@@ -1,6 +1,7 @@
 # upgraded-parakeet
 
 Simple React excersice
+https://kiwanska.github.io/upgraded-parakeet/
 
 ### tech stack
 - create react app (boilerplate)
