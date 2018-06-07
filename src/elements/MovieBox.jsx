@@ -9,8 +9,8 @@ const MovieBox = ({
   release_date,
   vote_average,
   overview,
-  addToFavourites,
-  addToWatchList,
+  toggleFavourites,
+  toggleWatchList,
   isOnFavList,
   isOnWatchList,
   narrow,
@@ -53,7 +53,7 @@ const MovieBox = ({
                       'level-item',
                     )}
                     aria-label='add to watch list'
-                    onClick={() => addToWatchList(id)}
+                    onClick={() => toggleWatchList(id)}
                   >
                     <span className='icon is-small'>
                       <i className='fas fa-plus' aria-hidden='true' />
@@ -67,7 +67,7 @@ const MovieBox = ({
                       'level-item',
                     )}
                     aria-label='add to favourites'
-                    onClick={() => addToFavourites(id)}
+                    onClick={() => toggleFavourites(id)}
                   >
                     <span className='icon is-small'>
                       <i className='fas fa-heart' aria-hidden='true' />
@@ -95,8 +95,8 @@ MovieBox.propTypes = {
   release_date: PropTypes.string.isRequired,
   vote_average: PropTypes.number.isRequired,
   overview: PropTypes.string,
-  addToFavourites: PropTypes.func.isRequired,
-  addToWatchList: PropTypes.func.isRequired,
+  toggleFavourites: PropTypes.func.isRequired,
+  toggleWatchList: PropTypes.func.isRequired,
   isOnFavList: PropTypes.func.isRequired,
   isOnWatchList: PropTypes.func.isRequired,
   narrow: PropTypes.bool,

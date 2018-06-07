@@ -6,8 +6,8 @@ const SimpleMovieList = ({
   title,
   movies,
   vote_average,
-  addToFavourites,
-  addToWatchList,
+  toggleFavourites,
+  toggleWatchList,
   isOnFavList,
   isOnWatchList,
 }) => (
@@ -24,8 +24,8 @@ const SimpleMovieList = ({
               title={movie.title}
               release_date={movie.release_date}
               vote_average={movie.vote_average}
-              addToFavourites={addToFavourites}
-              addToWatchList={addToWatchList}
+              toggleFavourites={toggleFavourites}
+              toggleWatchList={toggleWatchList}
               isOnFavList={isOnFavList}
               isOnWatchList={isOnWatchList}
               narrow
@@ -36,5 +36,14 @@ const SimpleMovieList = ({
     </div>
   </section>
 )
+
+SimpleMovieList.defaultProp = {
+  title: PropTypes.string.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  toggleFavourites: PropTypes.func.isRequired,
+  toggleWatchList: PropTypes.func.isRequired,
+  isOnFavList: PropTypes.func.isRequired,
+  isOnWatchList: PropTypes.func.isRequired,
+}
 
 export default SimpleMovieList

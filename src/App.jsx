@@ -32,27 +32,27 @@ class App extends Component {
 
   isOnWatchList = movieId => !!(this.state.watchList.filter(movie => movie.id === movieId).length)
 
-  addToFavourites = (movieId) => {
-    if (!this.isOnFavList(movieId)) {
+  toggleList = (movieId, list) => {
+    const condition = list === WATCH_LIST ? this.isOnWatchList : this.isOnFavList
+    if (!condition(movieId)) {
       this.setState(prevState => ({
-        favList: [
-          ...prevState.favList,
+        [list]: [
+          ...prevState[list],
           ...prevState.movies.filter(movie => movie.id === movieId),
+        ],
+      }))
+    } else {
+      this.setState(prevState => ({
+        [list]: [
+          ...prevState[list].filter(movie => !(movie.id === movieId)),
         ],
       }))
     }
   }
 
-  addToWatchList = (movieId) => {
-    if (!this.isOnWatchList(movieId)) {
-      this.setState(prevState => ({
-        watchList: [
-          ...prevState.watchList,
-          ...prevState.movies.filter(movie => movie.id === movieId),
-        ],
-      }))
-    }
-  }
+  toggleWatchList = movieId => this.toggleList(movieId, WATCH_LIST)
+
+  toggleFavourites = movieId => this.toggleList(movieId, FAV_LIST)
 
 
   renderCurrentView = () => {
@@ -63,16 +63,20 @@ class App extends Component {
       currentView,
     } = this.state
 
+    const defaultProps = {
+      toggleFavourites: this.toggleFavourites,
+      toggleWatchList: this.toggleWatchList,
+      isOnFavList: this.isOnFavList,
+      isOnWatchList: this.isOnWatchList,
+    }
+
     switch (currentView) {
       case FAV_LIST:
         return (
           <SimpleMovieList
             title='Movies you favourited'
             movies={favList}
-            addToFavourites={this.addToFavourites}
-            addToWatchList={this.addToWatchList}
-            isOnFavList={this.isOnFavList}
-            isOnWatchList={this.isOnWatchList}
+            {...defaultProps}
           />
         )
       case WATCH_LIST:
@@ -80,20 +84,14 @@ class App extends Component {
           <SimpleMovieList
             title='Movies you saved'
             movies={watchList}
-            addToFavourites={this.addToFavourites}
-            addToWatchList={this.addToWatchList}
-            isOnFavList={this.isOnFavList}
-            isOnWatchList={this.isOnWatchList}
+            {...defaultProps}
           />
         )
       default:
         return (
           <MoviesList
             movies={movies}
-            addToFavourites={this.addToFavourites}
-            addToWatchList={this.addToWatchList}
-            isOnFavList={this.isOnFavList}
-            isOnWatchList={this.isOnWatchList}
+            {...defaultProps}
           />
         )
     }

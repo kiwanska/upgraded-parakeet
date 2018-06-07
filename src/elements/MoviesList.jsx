@@ -4,8 +4,8 @@ import MovieBox from './MovieBox'
 
 const MoviesList = ({
   movies,
-  addToFavourites,
-  addToWatchList,
+  toggleFavourites,
+  toggleWatchList,
   isOnFavList,
   isOnWatchList,
 }) => (
@@ -15,8 +15,8 @@ const MoviesList = ({
         <MovieBox
           key={movie.id}
           {...movie}
-          addToFavourites={addToFavourites}
-          addToWatchList={addToWatchList}
+          toggleFavourites={toggleFavourites}
+          toggleWatchList={toggleWatchList}
           isOnFavList={isOnFavList}
           isOnWatchList={isOnWatchList}
         />
@@ -27,8 +27,8 @@ const MoviesList = ({
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  addToFavourites: PropTypes.func.isRequired,
-  addToWatchList: PropTypes.func.isRequired,
+  toggleFavourites: PropTypes.func.isRequired,
+  toggleWatchList: PropTypes.func.isRequired,
   isOnFavList: PropTypes.func.isRequired,
   isOnWatchList: PropTypes.func.isRequired,
 }
