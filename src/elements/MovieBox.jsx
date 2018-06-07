@@ -35,9 +35,18 @@ const MovieBox = ({
         <div className='content'>
           <div className={cx('columns', { 'is-multiline': narrow })}>
             <p className={cx('column', narrow ? 'is-12' : 'is-3')}>
-              <strong className='title is-4'>{title}</strong><br />
-              <small>{release_date}</small><br />
-              <small>{vote_average}</small>
+              <strong className='title is-4'>{title}</strong>
+              <br />
+              <small>
+                <span role='img' aria-label='release date'>🎬</span>
+                {release_date}
+              </small>
+              <br />
+              <small>
+                <span role='img' aria-label='rating'>⭐️</span>
+                {vote_average}
+                <span className='content is-small'> / 10</span>
+              </small>
             </p>
             {overview &&
               <p className='column content is-small'>{overview}</p>

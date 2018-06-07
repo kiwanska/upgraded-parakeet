@@ -16,11 +16,15 @@ const Header = ({
   <section className={cx('section', wrapperClass)}>
     <div className='container'>
       <header className='level'>
-        <h1 className='title is-5'>
-          My TV&nbsp;
-          <span role='img' aria-label='kiwi, frogg, cactus'>🥦 🐸 🌵</span>
+        <h1 className='title is-4 level-left'>
+          <img
+            className='image is-48x48 level-left'
+            src='/parakeet-fav.png'
+            alt='parakeet'
+          />
+          &nbsp;TV
         </h1>
-        <nav className='level'>
+        <nav className='level-right'>
           <div className='field has-addons'>
             <p className='control'>
               <button
