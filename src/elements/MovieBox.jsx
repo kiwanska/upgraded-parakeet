@@ -24,11 +24,13 @@ const MovieBox = ({
           { 'movie__image-container--narrow': narrow },
         )}
       >
-        <figure className='image is-5by3'>
-          <img
-            src={`https://image.tmdb.org/t/p/w300${backdrop_path}`}
-            alt=''
-          />
+        <figure className='movie__image image is-5by3'>
+          {backdrop_path &&
+            <img
+              src={`https://image.tmdb.org/t/p/w300${backdrop_path}`}
+              alt=''
+            />
+          }
         </figure>
       </div>
       <div className='media-content'>
@@ -93,13 +95,14 @@ const MovieBox = ({
 )
 
 MovieBox.defaultProps = {
+  backdrop_path: '',
   overview: '',
   narrow: false,
 }
 
 MovieBox.propTypes = {
   id: PropTypes.number.isRequired,
-  backdrop_path: PropTypes.string.isRequired,
+  backdrop_path: PropTypes.string,
   title: PropTypes.string.isRequired,
   release_date: PropTypes.string.isRequired,
   vote_average: PropTypes.number.isRequired,

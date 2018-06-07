@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import SearchBar from './../components/SearchBar'
 import MovieBox from './MovieBox'
 
 const MoviesList = ({
@@ -8,9 +9,16 @@ const MoviesList = ({
   toggleWatchList,
   isOnFavList,
   isOnWatchList,
+  searchMovies,
 }) => (
   <section className='section'>
     <div className='container'>
+      <div className='level'>
+        <SearchBar
+          wrapperClass='level-item'
+          searchMovies={searchMovies}
+        />
+      </div>
       {movies.map(movie => (
         <MovieBox
           key={movie.id}
@@ -31,6 +39,7 @@ MoviesList.propTypes = {
   toggleWatchList: PropTypes.func.isRequired,
   isOnFavList: PropTypes.func.isRequired,
   isOnWatchList: PropTypes.func.isRequired,
+  searchMovies: PropTypes.func.isRequired,
 }
 
 export default MoviesList

@@ -19,3 +19,6 @@ body {
       width: 200px; } }
   .movie__image-container--narrow {
     width: 80px; }
+
+.movie__image {
+  background-color: #eee; }

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { getSampleMovies } from './api'
+import {
+  getSampleMovies,
+  getMoviesByQuery,
+} from './api'
 import {
   HOME,
   FAV_LIST,
@@ -28,6 +31,11 @@ class App extends Component {
     this.setState({ movies })
   }
 
+  searchMovies = async (query) => {
+    const movies = await getMoviesByQuery(query)
+    this.setState({ movies })
+  }
+
   isOnFavList = movieId => !!(this.state.favList.filter(movie => movie.id === movieId).length)
 
   isOnWatchList = movieId => !!(this.state.watchList.filter(movie => movie.id === movieId).length)
@@ -53,7 +61,6 @@ class App extends Component {
   toggleWatchList = movieId => this.toggleList(movieId, WATCH_LIST)
 
   toggleFavourites = movieId => this.toggleList(movieId, FAV_LIST)
-
 
   renderCurrentView = () => {
     const {
@@ -91,6 +98,7 @@ class App extends Component {
         return (
           <MoviesList
             movies={movies}
+            searchMovies={this.searchMovies}
             {...defaultProps}
           />
         )
