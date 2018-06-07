@@ -32,8 +32,12 @@ class App extends Component {
   }
 
   searchMovies = async (query) => {
-    const movies = await getMoviesByQuery(query)
-    this.setState({ movies })
+    if (!query) {
+      this.fetchMovies()
+    } else {
+      const movies = await getMoviesByQuery(query)
+      this.setState({ movies })
+    }
   }
 
   isOnFavList = movieId => !!(this.state.favList.filter(movie => movie.id === movieId).length)

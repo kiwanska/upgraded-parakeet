@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import SearchBar from './../components/SearchBar'
 import MovieBox from './MovieBox'
+import ListContainer from './ListContainer'
 
 const MoviesList = ({
   movies,
@@ -19,16 +20,20 @@ const MoviesList = ({
           searchMovies={searchMovies}
         />
       </div>
-      {movies.map(movie => (
-        <MovieBox
-          key={movie.id}
-          {...movie}
-          toggleFavourites={toggleFavourites}
-          toggleWatchList={toggleWatchList}
-          isOnFavList={isOnFavList}
-          isOnWatchList={isOnWatchList}
-        />
-      ))}
+      <ListContainer
+        cta='Nothing was found, try another phrase!'
+      >
+        {movies.map(movie => (
+          <MovieBox
+            key={movie.id}
+            {...movie}
+            toggleFavourites={toggleFavourites}
+            toggleWatchList={toggleWatchList}
+            isOnFavList={isOnFavList}
+            isOnWatchList={isOnWatchList}
+          />
+        ))}
+      </ListContainer>
     </div>
   </section>
 )

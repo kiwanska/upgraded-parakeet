@@ -11,7 +11,7 @@ const ListContainer = ({
         <div className='hero-body'>
           <div className='container'>
             <h1 className='title is-4'>
-              No movies yet!
+              Nothing here!
             </h1>
             <h2 className='subtitle is-6'>
               <span role='img' aria-label='pointer'>👉</span>{cta}
