@@ -18,6 +18,8 @@ class App extends Component {
     favList: [],
     watchList: [],
     currentView: HOME,
+    favListFilterPhrase: '',
+    watchListFilterPhrase: '',
   }
 
   componentDidMount() {
@@ -25,6 +27,14 @@ class App extends Component {
   }
 
   setCurrentView = currentView => this.setState({ currentView })
+
+  setFilterPhrase = (list, filterPhrase) => {
+    if (list === FAV_LIST) {
+      this.setState({ favListFilterPhrase: filterPhrase })
+    } else {
+      this.setState({ watchListFilterPhrase: filterPhrase })
+    }
+  }
 
   fetchMovies = async () => {
     const movies = await getSampleMovies()
@@ -66,12 +76,19 @@ class App extends Component {
 
   toggleFavourites = movieId => this.toggleList(movieId, FAV_LIST)
 
+  filterMovies = (movies, filterPhrase) => {
+    if (!filterPhrase) return movies
+    return movies.filter(movie => movie.title.toLowerCase().includes(filterPhrase.toLowerCase()))
+  }
+
   renderCurrentView = () => {
     const {
       movies,
       favList,
       watchList,
       currentView,
+      favListFilterPhrase,
+      watchListFilterPhrase,
     } = this.state
 
     const defaultProps = {
@@ -86,7 +103,8 @@ class App extends Component {
         return (
           <SimpleMovieList
             title='Favourites'
-            movies={favList}
+            movies={this.filterMovies(favList, favListFilterPhrase)}
+            setFilterPhrase={searchPhrase => this.setFilterPhrase(FAV_LIST, searchPhrase)}
             {...defaultProps}
           />
         )
@@ -94,7 +112,8 @@ class App extends Component {
         return (
           <SimpleMovieList
             title='Watch List'
-            movies={watchList}
+            movies={this.filterMovies(watchList, watchListFilterPhrase)}
+            setFilterPhrase={searchPhrase => this.setFilterPhrase(WATCH_LIST, searchPhrase)}
             {...defaultProps}
           />
         )

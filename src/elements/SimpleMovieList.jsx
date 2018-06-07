@@ -2,19 +2,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import MovieBox from './MovieBox'
 import ListContainer from './ListContainer'
+import SearchBar from './../components/SearchBar'
 
 const SimpleMovieList = ({
   title,
   movies,
-  vote_average,
   toggleFavourites,
   toggleWatchList,
   isOnFavList,
   isOnWatchList,
+  setFilterPhrase,
 }) => (
   <section className='section'>
     <div className='container'>
       <h1 className='title is-5 has-text-left'>{title}</h1>
+      <div className='level'>
+        <SearchBar
+          wrapperClass='level-item'
+          onClick={setFilterPhrase}
+          cta='Filter'
+          placeholder='Filter the list'
+        />
+      </div>
       <div className='columns'>
         <ListContainer
           cta={`Add movies to your ${title} and see them here`}
@@ -42,13 +51,14 @@ const SimpleMovieList = ({
   </section>
 )
 
-SimpleMovieList.defaultProp = {
+SimpleMovieList.propTypes = {
   title: PropTypes.string.isRequired,
   movies: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   toggleFavourites: PropTypes.func.isRequired,
   toggleWatchList: PropTypes.func.isRequired,
   isOnFavList: PropTypes.func.isRequired,
   isOnWatchList: PropTypes.func.isRequired,
+  setFilterPhrase: PropTypes.func.isRequired,
 }
 
 export default SimpleMovieList

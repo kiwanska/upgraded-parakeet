@@ -17,7 +17,9 @@ const MoviesList = ({
       <div className='level'>
         <SearchBar
           wrapperClass='level-item'
-          searchMovies={searchMovies}
+          onClick={searchMovies}
+          cta='Search'
+          placeholder='Find movies'
         />
       </div>
       <ListContainer

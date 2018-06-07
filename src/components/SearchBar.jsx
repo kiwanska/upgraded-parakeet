@@ -15,10 +15,14 @@ class SearchBar extends Component {
 
   handleChange = ({ target }) => this.setState({ searchPhrase: target.value })
 
-  handleSubmit = () => this.props.searchMovies(this.state.searchPhrase)
+  handleSubmit = () => this.props.onClick(this.state.searchPhrase)
 
   render() {
-    const { wrapperClass } = this.props
+    const {
+      wrapperClass,
+      cta,
+      placeholder,
+    } = this.props
 
     return (
       <div className={wrapperClass}>
@@ -27,7 +31,7 @@ class SearchBar extends Component {
             <input
               className='input'
               type='text'
-              placeholder='Find movies'
+              placeholder={placeholder}
               onChange={this.handleChange}
             />
           </div>
@@ -37,7 +41,7 @@ class SearchBar extends Component {
               onClick={this.handleSubmit}
               type='submit'
             >
-              Search
+              {cta}
             </button>
           </div>
         </div>
@@ -52,7 +56,9 @@ SearchBar.defaultProps = {
 
 SearchBar.propTypes = {
   wrapperClass: PropTypes.string,
-  searchMovies: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  cta: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
 }
 
 export default SearchBar

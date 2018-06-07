@@ -25,8 +25,9 @@ const ListContainer = ({
   return children
 }
 
-ListContainer.defaultProp = {
+ListContainer.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
+  cta: PropTypes.string.isRequired,
 }
 
 export default ListContainer
