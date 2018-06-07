@@ -8,7 +8,10 @@ const Header = ({
   <section className='section'>
     <div className='container'>
       <header className='header level'>
-        <h1 className='header__title title is-5'>My TV 🥝 🐸 🌵</h1>
+        <h1 className='header__title title is-5'>
+          My TV&nbsp;
+          <span role='img' aria-label='kiwi, frogg, cactus'>🥝 🐸 🌵</span>
+        </h1>
         <nav className='level'>
           <div className='field has-addons'>
             <p className='control'>

@@ -2,10 +2,10 @@
   text-align: center;
 
   &__header {
-    background-color: #eee;
-    color: #fff;
     height: 100px;
     padding: 20px;
+    color: $white;
+    background-color: $light-grey;
   }
 
   &__title {

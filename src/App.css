@@ -6,9 +6,9 @@ body {
 .parakeet {
   text-align: center; }
   .parakeet__header {
-    background-color: #eee;
-    color: #fff;
     height: 100px;
-    padding: 20px; }
+    padding: 20px;
+    color: #fff;
+    background-color: #eee; }
   .parakeet__title {
     font-size: 1.5em; }
