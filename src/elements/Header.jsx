@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 import {
   HOME,
   FAV_LIST,
@@ -10,11 +11,12 @@ const Header = ({
   favCount,
   listCount,
   setCurrentView,
+  wrapperClass,
 }) => (
-  <section className='section'>
+  <section className={cx('section', wrapperClass)}>
     <div className='container'>
-      <header className='header level'>
-        <h1 className='header__title title is-5'>
+      <header className='level'>
+        <h1 className='title is-5'>
           My TV&nbsp;
           <span role='img' aria-label='kiwi, frogg, cactus'>🥦 🐸 🌵</span>
         </h1>
@@ -51,10 +53,15 @@ const Header = ({
   </section>
 )
 
+Header.defaultProps = {
+  wrapperClass: '',
+}
+
 Header.propTypes = {
   favCount: PropTypes.number.isRequired,
   listCount: PropTypes.number.isRequired,
   setCurrentView: PropTypes.func.isRequired,
+  wrapperClass: PropTypes.string,
 }
 
 export default Header

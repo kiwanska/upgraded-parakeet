@@ -90,14 +90,13 @@ class App extends Component {
       watchList,
     } = this.state
 
-    console.log(favList)
-
     return (
       <div className='parakeet'>
         <Header
           favCount={favList.length}
           listCount={watchList.length}
           setCurrentView={this.setCurrentView}
+          wrapperClass='parakeet__header'
         />
         {this.renderCurrentView()}
       </div>

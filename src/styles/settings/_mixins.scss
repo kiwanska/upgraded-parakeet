@@ -1,0 +1,27 @@
+@mixin sizing($args, $prefix: '') {
+  $width: if(length($args) == 2, nth($args, 1), $args);
+  $height: if(length($args) == 2, nth($args, 2), $args);
+  #{$prefix}width: $width;
+  #{$prefix}height: $height;
+}
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tabletUp {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktopUp {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}

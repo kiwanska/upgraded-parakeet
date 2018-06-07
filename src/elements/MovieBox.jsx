@@ -16,8 +16,8 @@ const MovieBox = ({
 }) => (
   <div className='movie box'>
     <article className='media'>
-      <div className='media-left'>
-        <figure className='image is-128x128'>
+      <div className='media-left movie__image-container'>
+        <figure className='image is-5by3'>
           <img
             src={`https://image.tmdb.org/t/p/w300${imageUrl}`}
             alt=''
@@ -33,9 +33,9 @@ const MovieBox = ({
               <small>{voteAverage}</small>
             </p>
             <p className='column content is-small'>{overview}</p>
-            <div className='column is-2'>
+            <div className='column is-narrow'>
               <nav className='level is-mobile'>
-                <div className='level-left'>
+                <div className='level-right'>
                   <button
                     className={cx(
                       'button',
