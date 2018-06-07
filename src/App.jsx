@@ -35,7 +35,10 @@ class App extends Component {
   addToFavourites = (movieId) => {
     if (!this.isOnFavList(movieId)) {
       this.setState(prevState => ({
-        favList: [...prevState.favList, ...prevState.movies.filter(movie => movie.id === movieId)],
+        favList: [
+          ...prevState.favList,
+          ...prevState.movies.filter(movie => movie.id === movieId),
+        ],
       }))
     }
   }
@@ -43,7 +46,10 @@ class App extends Component {
   addToWatchList = (movieId) => {
     if (!this.isOnWatchList(movieId)) {
       this.setState(prevState => ({
-        watchList: [...prevState.watchList, ...prevState.movies.filter(movie => movie.id === movieId)],
+        watchList: [
+          ...prevState.watchList,
+          ...prevState.movies.filter(movie => movie.id === movieId),
+        ],
       }))
     }
   }

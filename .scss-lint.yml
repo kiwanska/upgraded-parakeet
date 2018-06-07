@@ -35,7 +35,7 @@ linters:
   NameFormat:
     enabled: false
   NestingDepth:
-    max_depth: 4
+    max_depth: 3
     severity: warning
   IdSelector:
     severity: error
@@ -159,10 +159,10 @@ linters:
   QualifyingElement:
     enabled: false
   SelectorDepth:
-    max_depth: 4
+    max_depth: 3
     severity: warning
   SelectorFormat:
-    convention: [hyphenated_BEM, camel_case]
+    convention: [hyphenated_BEM]
   Shorthand:
     allowed_shorthands: [1, 2, 3, 4]
   SingleLinePerProperty:

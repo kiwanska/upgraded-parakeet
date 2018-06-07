@@ -4,10 +4,10 @@ import cx from 'classnames'
 
 const MovieBox = ({
   id,
-  backdrop_path: imageUrl,
+  backdrop_path,
   title,
-  release_date: releaseDate,
-  vote_average: voteAverage,
+  release_date,
+  vote_average,
   overview,
   addToFavourites,
   addToWatchList,
@@ -26,7 +26,7 @@ const MovieBox = ({
       >
         <figure className='image is-5by3'>
           <img
-            src={`https://image.tmdb.org/t/p/w300${imageUrl}`}
+            src={`https://image.tmdb.org/t/p/w300${backdrop_path}`}
             alt=''
           />
         </figure>
@@ -36,8 +36,8 @@ const MovieBox = ({
           <div className={cx('columns', { 'is-multiline': narrow })}>
             <p className={cx('column', narrow ? 'is-12' : 'is-3')}>
               <strong className='title is-4'>{title}</strong><br />
-              <small>{releaseDate}</small><br />
-              <small>{voteAverage}</small>
+              <small>{release_date}</small><br />
+              <small>{vote_average}</small>
             </p>
             {overview &&
               <p className='column content is-small'>{overview}</p>
