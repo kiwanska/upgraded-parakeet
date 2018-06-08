@@ -19,7 +19,7 @@ const Header = ({
         <h1 className='title is-4 level-left'>
           <img
             className='image is-48x48 level-left'
-            src='/parakeet-fav.png'
+            src={`${process.env.PUBLIC_URL}/parakeet-fav.png`}
             alt='parakeet'
           />
           &nbsp;TV
